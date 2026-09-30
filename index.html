@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f6e56" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Mis Gastos" />
+    <title>Mis Gastos</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <h1>Mis Gastos</h1>
+        <p id="sync-status">Guardado en este celular</p>
+      </header>
+
+      <section id="view-add" class="view active">
+        <form id="expense-form" class="card stack">
+          <label class="amount">
+            Valor
+            <input id="amount" inputmode="numeric" placeholder="0" autocomplete="off" required />
+          </label>
+          <div>
+            <label>Categoría</label>
+            <div id="categories" class="chips"></div>
+          </div>
+          <label>
+            Descripción
+            <input id="description" placeholder="Almuerzo, mercado, gasolina" required />
+          </label>
+          <label>
+            Fecha
+            <input id="date" type="date" required />
+          </label>
+          <label>
+            Medio de pago
+            <select id="payment"></select>
+          </label>
+          <button class="primary" type="submit">Guardar gasto</button>
+          <p id="form-message" class="message"></p>
+        </form>
+      </section>
+
+      <section id="view-month" class="view">
+        <label>
+          Mes
+          <input id="month" type="month" />
+        </label>
+        <div class="meters">
+          <article class="card meter">
+            <header><span>Hoy</span><strong id="today-value"></strong></header>
+            <div class="bar" id="today-bar"><i></i></div>
+          </article>
+          <article class="card meter">
+            <header><span>Esta semana</span><strong id="week-value"></strong></header>
+            <div class="bar" id="week-bar"><i></i></div>
+          </article>
+          <article class="card meter">
+            <header><span>Mes variable</span><strong id="month-value"></strong></header>
+            <div class="bar" id="month-bar"><i></i></div>
+          </article>
+        </div>
+        <div id="expense-list"></div>
+        <p class="note">Los gastos marcados como Fijo no consumen estos topes. Un plan grande de ocio sí aparece y puede pasar la semana.</p>
+      </section>
+
+      <section id="view-settings" class="view">
+        <form id="github-form" class="card stack">
+          <label>
+            Token de GitHub
+            <input id="token" type="password" autocomplete="off" placeholder="github_pat_..." />
+          </label>
+          <label>
+            Repositorio privado
+            <input id="repo" placeholder="mis-gastos-datos" />
+          </label>
+          <button class="primary" type="submit">Conectar y sincronizar</button>
+          <button id="disconnect" class="ghost hidden" type="button">Quitar token de este celular</button>
+          <p id="settings-message" class="message"></p>
+        </form>
+        <p class="note">
+          El token se queda en este celular. Créalo en GitHub como fine-grained,
+          solo para el repositorio privado, con permiso Contents de lectura y escritura.
+          En iPhone, abre esta página en Safari y usa Compartir, luego Agregar a pantalla de inicio.
+        </p>
+      </section>
+    </div>
+
+    <nav class="nav">
+      <button type="button" data-view="add" class="active">Registrar</button>
+      <button type="button" data-view="month">Mes</button>
+      <button type="button" data-view="settings">Ajustes</button>
+    </nav>
+    <script src="app.js"></script>
+  </body>
+</html>

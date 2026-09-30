@@ -1,0 +1,211 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f1ea;
+  --ink: #1c1915;
+  --muted: #6d675e;
+  --line: #e2dbd0;
+  --card: #fffdf9;
+  --accent: #0f6e56;
+  --accent-ink: #ffffff;
+  --danger: #9b3d2f;
+  --warn: #8a5a12;
+  --ok: #0f6e56;
+  --shadow: 0 1px 0 rgba(28, 25, 21, 0.04);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+button, input, select { font: inherit; color: inherit; }
+
+.app {
+  width: min(100%, 480px);
+  margin: 0 auto;
+  min-height: 100dvh;
+  padding: 20px 16px 108px;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.top p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.view { display: none; margin-top: 22px; }
+.view.active { display: block; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.stack { display: grid; gap: 12px; }
+
+label {
+  display: grid;
+  gap: 6px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+input, select {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+}
+
+.amount input {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 34px;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  padding: 14px;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip, .nav button, .primary, .ghost, .text-button {
+  border: 0;
+  cursor: pointer;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.chip.selected {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+.primary, .ghost {
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+}
+
+.primary { background: var(--accent); color: var(--accent-ink); }
+.ghost { background: transparent; color: var(--danger); }
+
+.meters, .list { display: grid; gap: 10px; margin-top: 14px; }
+
+.meter span, .expense small, .note {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.meter strong, .expense strong {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.meter {
+  display: grid;
+  gap: 8px;
+}
+
+.meter header, .expense {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.bar {
+  height: 8px;
+  background: #ece7df;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--ok);
+}
+
+.bar.over i { background: var(--danger); }
+.bar.warn i { background: var(--warn); }
+
+.expense {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.expense:last-child { border-bottom: 0; }
+
+.expense div { display: grid; gap: 2px; }
+
+.day-label {
+  margin: 16px 0 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.note { line-height: 1.45; }
+
+.nav {
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  width: min(calc(100% - 24px), 456px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 6px;
+  background: #fffdf9;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.nav button {
+  background: transparent;
+  border-radius: 12px;
+  padding: 10px 6px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.nav button.active { background: #e7f3ef; color: var(--accent); }
+
+.hidden { display: none; }
+
+.message {
+  min-height: 1.2em;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+}
